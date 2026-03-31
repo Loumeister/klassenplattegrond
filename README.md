@@ -100,3 +100,39 @@ options:
 *   **Student's View Rotation**: The "Student's View" is a 180-degree rotation of the "Teacher's View". This means:
     *   The table block that is at the "front" in the Teacher's View (e.g., Table 1) will appear as the "back" table from the student's perspective.
     *   Seats are mirrored accordingly. For example, the student in the top-left seat of Table 1 (Teacher's View) would appear in the bottom-right seat of the corresponding (now rearmost) table in the Student's View.
+
+## iPhone Wrapper App (Carnaval der Dieren)
+
+This repository now includes an iOS wrapper app at:
+
+- `ios/CarnavalDerDierenApp`
+
+### What it does
+
+- Loads a locally scraped copy of the app from `WebMirror/index.html` if present.
+- Falls back to the live URL `https://followamuse.nl/apps/carnaval-der-dieren/` when no local mirror exists.
+
+### Scrape the web app
+
+Use:
+
+```bash
+./scripts/scrape_followamuse.sh
+```
+
+This mirrors the page assets into:
+
+- `ios/CarnavalDerDierenApp/CarnavalDerDierenApp/Resources/WebMirror`
+
+### Generate and run the Xcode project
+
+1. Install `xcodegen` if needed (`brew install xcodegen`).
+2. Generate project files:
+
+```bash
+cd ios/CarnavalDerDierenApp
+xcodegen generate
+```
+
+3. Open `CarnavalDerDierenApp.xcodeproj` in Xcode.
+4. Build/run on an iPhone simulator or a physical iPhone.
